@@ -26,11 +26,16 @@ and open the template in the editor.
                 $("#yesno").hide();
                 $("#studentno").hide();
                 $("#thankyou").hide();
+                
+                $("button").attr('disabled','disabled');
 
-                $("#smile").click(function (e) {
+                $("#smile").on('click', function(e) {
 
-                    e.preventDefault();
 
+                e.preventDefault();
+                
+                 
+         
                     $("#sad").fadeOut(500);
                     $("#smile").fadeOut(500);
                     $("#feedback").fadeOut(500);
@@ -50,7 +55,8 @@ and open the template in the editor.
 
                         success: function (data) {
                             console.log(data);
-
+                            
+                        $("#smile").attr("disabled", false);
 
                         }
 
@@ -87,6 +93,34 @@ and open the template in the editor.
 
                     });
                 });
+                
+                $("#feedback").click(function (e) {
+
+                    e.preventDefault();
+
+                    $("#sad").fadeOut(500);
+                    $("#smile").fadeOut(500);
+                    $("#feedback").fadeOut(500);
+                    $("#welcome").fadeOut(500);
+                    
+                    $("#studentno").hide().delay(500).fadeIn(500);
+
+                    var test = 0;
+                    console.log(test);
+
+                    $.ajax({url: "process2.php",
+                        type: "POST",
+                        data: {test: test},
+
+                        success: function (data) {
+                            console.log(data);
+
+
+                        }
+
+                    });
+                });
+                
             });
 
 
@@ -100,47 +134,47 @@ and open the template in the editor.
     </head>
     <body>
 
-     
 
-            <br>
-            <br>
-            
-            <div class="row" id="welcome">  
-                <div class="col-sm-12">
-                    <h1 id="title">How did you find the QUB WiFi today?</h1>
-                    <br>
-            <br>
+
+        <br>
+
+
+        <div class="row" id="welcome">  
+            <div class="col-sm-12">
+                <img src="images/wifibanner.png">
+                <br>
+                <br>
             </div>    
+        </div>
+
+
+
+
+<form id="form">
+
+        <div class="row " id="smile">   
+
+            <div class="col-sm-6">  
+                <button id="smile"><input type='hidden' name='smile'><img src="images/smile.png"  class="center left"/></button>
+            </div>  
+            <div class="col-sm-6">
+                <button id="sad"><input type='hidden' name='sad'><img src="images/sad.png"  class="center right"/></button>  
             </div>
-            
-           
-      
+
+        </div>
 
 
-       
-            <div class="row">   
+</form>
 
-                <div class="col-sm-6">  
-                    <button id="smile"><input type='hidden' name='smile'><img src="images/smile.png" width="250" class="center"/></button>
-                </div>  
-                <div class="col-sm-6">
-                    <button id="sad"><input type='hidden' name='sad'><img src="images/sad.png" width="250" class="center"/></button>  
-                </div>
 
+        <div class="row feedback" id="feedback">  
+
+            <div class="col-md-12">
+
+                <br>
+                <button type="button"><h3 >Tap here to provide feedback</h3></button>
             </div>
-       
 
-
-
-     
-            <div class="row" id="feedback">  
-              
-                <div class="col-md-12">
-                    <br>
-                    <br>
-                    <h3 >Tap here to provide feedback</h3>
-                </div>
-                 
         </div>
 
 
@@ -153,7 +187,7 @@ and open the template in the editor.
             <br>
             <br>
             <br>
-            
+
             <h1>Thank you for your feedback</h1>
 
         </div>
@@ -162,7 +196,8 @@ and open the template in the editor.
 
 
 
-        <div id="studentno">
+        <div class="row" id="studentno">  
+            <div class="col-sm-12">
 
             <label for="studentin">Please enter your student number</label>
             <input type="text" placeholder="Student number" id="studentin" name="studentin"/>
