@@ -48,20 +48,23 @@ and open the template in the editor.
                 var test = 0;
                 console.log(test);
                 
-                 $.ajax({url: "process2.php",
-                    type: "POST",
-                    data: {test: test},
-                    
-                    success: function(data){
-                       console.log(data);
-                      
+                $("#sad").fadeOut(1200);
+                $("#smile").fadeOut(1200);
+                
+                  if ($("#yes").click(function(e){
+                
+                  e.preventDefault();
                   
-                    }
-                    
-                    });
+                 })){ 
+                     
+                 }else {
+                     
+                 };
+                 }
               });
-                });
- 
+                
+              });
+               
    
         </script>
         
@@ -74,7 +77,25 @@ and open the template in the editor.
         <form id="number">
             
             <button id="smile" value="1"><input type='hidden' name='smile' id='smilevalue'><img src="images/smile.png" /></button> 
-              <button id="sad" value="0"><input type='hidden' name='sad' id='sadvalue'><img src="images/sad.png" /></button> 
+            <button id="sad" value="0"><input type='hidden' name='sad' id='sadvalue'><img src="images/sad.png" /></button> 
+
+            <div id="yesno">
+
+                <label for="option">Would you like to give your student/staff number to be contacted for feedback?</label>
+                <button type="button">Yes</button>
+                <button type="button">No</button>
+
+                <br>
+
+            </div>   
+            
+            <div id="studentno">
+                
+                <label for="studentin">Enter your student number</label>
+                <input type="text" placeholder="Please enter your student number here" id="studentin" name="studentin"/>
+                
+            </div>
+          
             
         </form>
         
