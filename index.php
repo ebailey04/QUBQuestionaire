@@ -1,7 +1,5 @@
 <?php
-
 include('connections/conn.php');
-
 ?>
 
 
@@ -14,90 +12,163 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <title></title>
-        
-         <script>
-             
-          $(document).ready(function(){
-              
-          $("#smile").click(function(e){
-                
-                 e.preventDefault();
-                 
-                var test = 1;
-                console.log(test);
-                
-                 $.ajax({url: "process2.php",
-                    type: "POST",
-                    data: {test: test},
-                    
-                    success: function(data){
-                       console.log(data);
-                      
-                  
-                    }
-                    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-default.min.css">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v2.3.4/dist/mini-default.min.css">
+        <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+        <title>QUB Survey</title>
+
+
+        <script>
+
+            $(document).ready(function () {
+
+                $("#yesno").hide();
+                $("#studentno").hide();
+                $("#thankyou").hide();
+
+                $("#smile").click(function (e) {
+
+                    e.preventDefault();
+
+                    $("#sad").fadeOut(500);
+                    $("#smile").fadeOut(500);
+                    $("#feedback").fadeOut(500);
+                    $("#welcome").fadeOut(500);
+                    $("#thankyou").hide().delay(500).fadeIn(500);
+                    $("#thankyou").hide().delay(400).fadeOut(500);
+                    $("#sad").delay(1500).fadeIn(500);
+                    $("#smile").delay(1500).fadeIn(500);
+                    $("#feedback").delay(1500).fadeIn(500);
+                    $("#welcome").delay(1500).fadeIn(500);
+                    var test = 1;
+                    console.log(test);
+
+                    $.ajax({url: "process2.php",
+                        type: "POST",
+                        data: {test: test},
+
+                        success: function (data) {
+                            console.log(data);
+
+
+                        }
+
                     });
-              });
-              
-              $("#sad").click(function(e){
-                
-                 e.preventDefault();
-                 
-                var test = 0;
-                console.log(test);
-                
-                $("#sad").fadeOut(1200);
-                $("#smile").fadeOut(1200);
-                
-                  if ($("#yes").click(function(e){
-                
-                  e.preventDefault();
-                  
-                 })){ 
-                     
-                 }else {
-                     
-                 };
-                 }
-              });
-                
-              });
-               
-   
+                });
+
+                $("#sad").click(function (e) {
+
+                    e.preventDefault();
+
+                    $("#sad").fadeOut(500);
+                    $("#smile").fadeOut(500);
+                    $("#feedback").fadeOut(500);
+                    $("#welcome").fadeOut(500);
+                    $("#thankyou").hide().delay(500).fadeIn(500);
+                    $("#thankyou").hide().delay(400).fadeOut(500);
+                    $("#sad").delay(1500).fadeIn(500);
+                    $("#smile").delay(1500).fadeIn(500);
+                    $("#feedback").delay(1500).fadeIn(500);
+                    $("#welcome").delay(1500).fadeIn(500);
+
+                    var test = 0;
+                    console.log(test);
+
+                    $.ajax({url: "process2.php",
+                        type: "POST",
+                        data: {test: test},
+
+                        success: function (data) {
+                            console.log(data);
+
+
+                        }
+
+                    });
+                });
+            });
+
+
+
+
         </script>
-        
-        
-      
-        
+
+
+
+
     </head>
     <body>
 
-        <form id="number">
+     
+
+            <br>
+            <br>
             
-            <button id="smile" value="1"><input type='hidden' name='smile' id='smilevalue'><img src="images/smile.png" /></button> 
-            <button id="sad" value="0"><input type='hidden' name='sad' id='sadvalue'><img src="images/sad.png" /></button> 
-
-            <div id="yesno">
-
-                <label for="option">Would you like to give your student/staff number to be contacted for feedback?</label>
-                <button type="button">Yes</button>
-                <button type="button">No</button>
-
-                <br>
-
-            </div>   
-            
-            <div id="studentno">
-                
-                <label for="studentin">Enter your student number</label>
-                <input type="text" placeholder="Please enter your student number here" id="studentin" name="studentin"/>
-                
+            <div class="row" id="welcome">  
+                <div class="col-sm-12">
+                    <h1 id="title">How did you find the QUB WiFi today?</h1>
+                    <br>
+            <br>
+            </div>    
             </div>
-          
             
-        </form>
-        
+           
+      
+
+
+       
+            <div class="row">   
+
+                <div class="col-sm-6">  
+                    <button id="smile"><input type='hidden' name='smile'><img src="images/smile.png" width="250" class="center"/></button>
+                </div>  
+                <div class="col-sm-6">
+                    <button id="sad"><input type='hidden' name='sad'><img src="images/sad.png" width="250" class="center"/></button>  
+                </div>
+
+            </div>
+       
+
+
+
+     
+            <div class="row" id="feedback">  
+              
+                <div class="col-md-12">
+                    <br>
+                    <br>
+                    <h3 >Tap here to provide feedback</h3>
+                </div>
+                 
+        </div>
+
+
+
+
+
+        <div id="thankyou">
+
+            <br>
+            <br>
+            <br>
+            <br>
+            
+            <h1>Thank you for your feedback</h1>
+
+        </div>
+
+
+
+
+
+        <div id="studentno">
+
+            <label for="studentin">Please enter your student number</label>
+            <input type="text" placeholder="Student number" id="studentin" name="studentin"/>
+
+        </div>
+
+
     </body>
 </html>

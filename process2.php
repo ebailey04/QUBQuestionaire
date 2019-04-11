@@ -36,6 +36,20 @@ $result = mysqli_query($conn,$query) or die(mysqli_error($conn));
 //
 //                        }
 //}
+} else{
+    
+    $date = date("Y-m-d");
+    echo $date;
+
+    $today = date('H:i:s');
+    $time = date('H:i:s', strtotime($today) + 60 * 60);
+    echo $time;
+    
+    $query="INSERT INTO appdata (date, goodbad, time) VALUES ('$date', '$number', '$time')";
+
+$result = mysqli_query($conn,$query) or die(mysqli_error($conn));
+
+    echo  "added";
 }
     
  
