@@ -32,7 +32,13 @@ h3, h2 {
 
 button {
     background: none !important;
-        border: none !important;
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
     
 }
 
@@ -40,7 +46,8 @@ button {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+ width:60%;
+  color: #ff0000;
 }
 
 .welcome {
@@ -55,4 +62,13 @@ button {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
+  color: #ff0000;
+}
+
+.left {
+    margin-left: 130px;
+}
+
+.right {
+    margin-right: 130px;
 }
